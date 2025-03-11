@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Go Trip</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css"/>
 </head>
 <body class="body">
+
 <header class="header">
-    <div class="header__nav container">
+    <div class="header__top">
+        <div class="header__top--contact">
+            <span class="header__top--contact__email">company@domain.com</span>
+            <span class="header__top--contact__separator">|</span>
+            <span class="header__top--contact__location">Tivat, Montenegro</span>
+        </div>
+        <div class="header__top--language">
+            <ul class="header__top--language__list">
+                <li class="header__top--language__list--item">
+                    <a href="#" class="header__top--language__list--item__link" title="Montenegrin">
+                        <span class="flag-icon flag-icon-me"></span>
+                    </a>
+                </li>
+                <li class="header__top--language__list--item">
+                    <a href="#" class="header__top--language__list--item__link" title="Russian">
+                        <span class="flag-icon flag-icon-ru"></span>
+                    </a>
+                </li>
+                <li class="header__top--language__list--item">
+                    <a href="#" class="header__top--language__list--item__link" title="English">
+                        <span class="flag-icon flag-icon-gb"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header__nav">
         <div class="header__nav--logo">
-            <h1 class="header__nav--logo__title">Go Trip</h1>
+            <h1 class="header__nav--logo__title">Logo</h1>
         </div>
         <ul class="header__nav--menu">
-            <li class="header__nav--menu__item">
-                <a href="#" class="header__nav--menu__link">Home</a>
+            <li class="header__nav--menu__item header__nav--menu__item--active">
+                <a href="#" class="header__nav--menu__item__link">Home</a>
             </li>
             <li class="header__nav--menu__item">
-                <a href="#" class="header__nav--menu__link">About</a>
+                <a href="#" class="header__nav--menu__item__link">About</a>
             </li>
             <li class="header__nav--menu__item">
-                <a href="#" class="header__nav--menu__link">Explore</a>
+                <a href="#" class="header__nav--menu__item__link">Packages</a>
             </li>
             <li class="header__nav--menu__item">
-                <a href="#" class="header__nav--menu__link">Pages</a>
-            </li>
-            <li class="header__nav--menu__item">
-                <a href="#" class="header__nav--menu__link">Contact</a>
+                <a href="#" class="header__nav--menu__item__link">Contact</a>
             </li>
         </ul>
-        <div class="header__nav--contact">
-            <a class="header__nav--contact__link" href="tel:+12122349999">+1 (212) 234-9999</a>
+        <div class="header__nav--cta">
+            <button class="header__nav--cta__btn">(+382)069/000-000</button>
         </div>
     </div>
 </header>
 
+<!-- Hero Section -->
 <section class="hero">
-    <div class="hero__content container">
-        <h2 class="hero__content--title">WELCOME TO LET'S TRAVEL</h2>
-        <p class="hero__content--subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed felis
-            bibendum blandit ac id augue. Mollitia ipsum dolor sit amet consectetur
-            adipisicing elit.
-        </p>
-        <button class="hero__content--button">Book Your Travel</button>
-    </div>
+    <h2 class="hero__title">Experience Montenegro Like Never Before</h2>
+    <p class="hero__subtitle">Let the journey begin</p>
+    <button class="hero__btn">Explore packages</button>
 </section>
+
+<div class="slider">
+    <div class="slider__slide"
+         style="background-image: url('https://cdn.getyourguide.com/img/location/5eb12ba3d32ef.jpeg/99.jpg');">
+    </div>
+    <div class="slider__slide"
+         style="background-image: url('https://nova.rs/wp-content/uploads/2023/07/14/1689345300-profimedia-0771466590.jpg');">
+    </div>
+    <div class="slider__slide"
+         style="background-image: url('https://www.montenegrohostel.com/images/BOKA_BAY_REGION/MH_Travel-Boka_Bay_05-02.jpg');">
+    </div>
+</div>
 </body>
 </html>

@@ -28,14 +28,16 @@
 .header__nav--menu {
   list-style: none;
   display: flex;
+  text-decoration: none;
 }
 .header__nav--menu__item {
-  margin-left: 1rem;
+  margin-left: 5rem;
 }
 .header__nav--menu__item__link {
   text-decoration: none;
   color: #000;
   padding: 0.5rem 1rem;
+  text-decoration: none;
 }
 .header__nav--menu__item__link:hover {
   color: #007bff;
