@@ -38,10 +38,9 @@
     align-items: stretch; // Ensures all cards stretch to the same height
 
     &--card {
-      /* The important change: make each card a flex column */
+      // Make each card a flex column container
       display: flex;
       flex-direction: column;
-
       flex: 0 0 350px;
       max-width: 350px;
       background: #fff;
@@ -102,10 +101,7 @@
         border-radius: 4px;
         transition: background-color 0.3s ease;
         text-decoration: none;
-
-        /* Pushes the button to the bottom of the card */
-        margin-top: auto;
-
+        margin-top: auto; // Pushes the button to the bottom
         &:hover {
           background-color: #ff2e2e;
         }
@@ -114,6 +110,21 @@
   }
 }
 
+/* Responsive adjustments for package cards */
+
+/* Tablets: Shrink card width to 300px */
 @media screen and (max-width: 768px) {
-  /* Adjust card widths or layout here if needed */
+  .packages__cards--card {
+    flex: 0 0 300px;
+    max-width: 300px;
+  }
+}
+
+/* Mobile: Use full width for a single-column layout */
+@media screen and (max-width: 480px) {
+  .packages__cards--card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }

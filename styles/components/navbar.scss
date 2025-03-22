@@ -2,97 +2,114 @@
   z-index: 9999;
   position: relative;
 
+  /* Top Bar (Contact & Language) */
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(to right, #ff6d80, #f34152);
     color: #fff;
-    padding: 0.5rem 5rem;
+    padding: 0.5rem 2rem;
+    flex-wrap: wrap;
 
+    /* Contact Section */
     &--contact {
       display: flex;
       align-items: center;
 
-      &__email,
-      &__location {
+      &__email {
+        font-size: 0.9rem;
       }
 
       &__separator {
         margin: 0 0.5rem;
         opacity: 0.7;
       }
+
+      &__location {
+        font-size: 0.9rem;
+      }
     }
 
+    /* Language Section */
     &--language {
       &__list {
+        display: flex;
         list-style: none;
         margin: 0;
         padding: 0;
-        display: flex;
+        gap: 0.5rem; // reduced gap between flags
         align-items: center;
-        gap: 1rem;
+      }
 
-        &--item {
-          margin-left: 0;
+      &__list--item {
+        // No extra margin on item level
+        &__link {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: #fff;
+          transition: color 0.2s ease;
+          // Scale down flags so they don't push layout
+          .flag-icon {
+            width: 1.5rem;
+            height: auto;
+          }
 
-          &__link {
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: color 0.2s ease;
-
-            .flag-icon {
-              width: 3rem;
-              height: auto;
-            }
-
-            &:hover {
-              color: #f0f0f0;
-            }
+          &:hover {
+            color: #f0f0f0;
           }
         }
       }
     }
   }
 
+  // end __top
+
+  /* Navbar */
   &__nav {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: transparent;
     backdrop-filter: blur(5px);
     padding: 1rem 5rem;
+    position: relative;
+    flex-wrap: wrap;
 
+    /* Logo */
     &--logo {
       &__title {
-        color: #fff;
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
         margin: 0;
+        color: #fff;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
       }
     }
 
+    /* Navigation Menu */
     &--menu {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
       list-style: none;
       margin: 0;
       padding: 0;
 
       &__item {
-        margin: 0 1rem;
+        position: relative; // for dropdown positioning
+        flex: 1 1 auto;
+        margin: 0 1vw;
 
         &__link {
+          display: block;
+          white-space: nowrap;
           color: #fff;
           text-decoration: none;
           font-weight: 500;
-          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-          padding: 0.5rem 0;
+          padding: 0.5rem;
+          transition: color 0.2s ease;
 
           i {
             font-size: 2rem;
@@ -103,23 +120,40 @@
           }
         }
 
-        &--active {
-          & .header__nav--menu__item__link {
-            font-weight: bold;
-            border-bottom: 2px solid #fff;
+        /* Dropdown functionality */
+        &.dropdown {
+          cursor: pointer;
+
+          /* Submenu hidden by default */
+          & .header__nav--menu__item--dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            min-width: 150px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+          }
+
+          &.open .header__nav--menu__item--dropdown {
+            display: block;
           }
         }
       }
     }
 
+    // end __nav--menu
+
+    /* CTA Button */
     &--cta {
       &__btn {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        padding: 0.5rem 1vw;
         background-color: #ff5f5f;
         border: none;
         color: #fff;
-        padding: 0.75rem 1.5rem;
         cursor: pointer;
-        font-size: 1rem;
         transition: background-color 0.3s ease;
 
         &:hover {
@@ -127,5 +161,45 @@
         }
       }
     }
+  }
+
+  // end __nav
+
+  /* Hamburger icon for mobile */
+  &__hamburger {
+    display: none;
+    cursor: pointer;
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+
+    span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+  }
+}
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .header__top,
+  .header__nav {
+    padding: 0.5rem 1rem;
+  }
+
+  /* Hide the inline nav menu and use hamburger toggle */
+  .header__nav--menu {
+    display: none;
+  }
+}
+
+/* Optional: Hide language section on very narrow screens */
+@media screen and (max-width: 480px) {
+  .header__top--language {
+    display: none;
   }
 }

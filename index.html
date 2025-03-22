@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Go Trip</title>
     <link rel="stylesheet" href="styles.css"/>
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -18,22 +18,25 @@
 <body class="body">
 <!-- Background Slider -->
 <div class="slider">
-    <div
-            class="slider__slide"
-            style="background-image: url('https://cdn.getyourguide.com/img/location/5eb12ba3d32ef.jpeg/99.jpg');"
-    ></div>
-    <div
-            class="slider__slide"
-            style="background-image: url('https://nova.rs/wp-content/uploads/2023/07/14/1689345300-profimedia-0771466590.jpg');"
-    ></div>
-    <div
-            class="slider__slide"
-            style="background-image: url('https://www.montenegrohostel.com/images/BOKA_BAY_REGION/MH_Travel-Boka_Bay_05-02.jpg');"
-    ></div>
+    <div class="container">
+        <div
+                class="slider__slide"
+                style="background-image: url('https://cdn.getyourguide.com/img/location/5eb12ba3d32ef.jpeg/99.jpg');"
+        ></div>
+        <div
+                class="slider__slide"
+                style="background-image: url('https://nova.rs/wp-content/uploads/2023/07/14/1689345300-profimedia-0771466590.jpg');"
+        ></div>
+        <div
+                class="slider__slide"
+                style="background-image: url('https://www.montenegrohostel.com/images/BOKA_BAY_REGION/MH_Travel-Boka_Bay_05-02.jpg');"
+        ></div>
+    </div>
 </div>
 
 
 <header class="header">
+    <!-- Top Bar -->
     <div class="header__top">
         <div class="header__top--contact">
             <span class="header__top--contact__email">company@domain.com</span>
@@ -43,29 +46,17 @@
         <div class="header__top--language">
             <ul class="header__top--language__list">
                 <li class="header__top--language__list--item">
-                    <a
-                            href="#"
-                            class="header__top--language__list--item__link"
-                            title="Montenegrin"
-                    >
+                    <a href="#" class="header__top--language__list--item__link" title="Montenegrin">
                         <span class="flag-icon flag-icon-me"></span>
                     </a>
                 </li>
                 <li class="header__top--language__list--item">
-                    <a
-                            href="#"
-                            class="header__top--language__list--item__link"
-                            title="Russian"
-                    >
+                    <a href="#" class="header__top--language__list--item__link" title="Russian">
                         <span class="flag-icon flag-icon-ru"></span>
                     </a>
                 </li>
                 <li class="header__top--language__list--item">
-                    <a
-                            href="#"
-                            class="header__top--language__list--item__link"
-                            title="English"
-                    >
+                    <a href="#" class="header__top--language__list--item__link" title="English">
                         <span class="flag-icon flag-icon-gb"></span>
                     </a>
                 </li>
@@ -73,16 +64,32 @@
         </div>
     </div>
 
+    <!-- Navbar -->
     <div class="header__nav">
         <div class="header__nav--logo">
             <h1 class="header__nav--logo__title">Logo</h1>
         </div>
-        <ul class="header__nav--menu">
-            <li class="header__nav--menu__item header__nav--menu__item--active">
+
+        <!-- Hamburger Icon for Mobile -->
+        <div class="header__hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <ul class="header__nav--menu" id="nav-menu">
+            <li class="header__nav--menu__item">
                 <a href="#" class="header__nav--menu__item__link">Home</a>
             </li>
-            <li class="header__nav--menu__item">
+            <li class="header__nav--menu__item dropdown">
                 <a href="#" class="header__nav--menu__item__link">About</a>
+                <!-- Dropdown Submenu -->
+                <ul class="header__nav--menu__item--dropdown">
+                    <li><a href="#" class="header__nav--menu__item__link">Our Story</a></li>
+                    <li><a href="#" class="header__nav--menu__item__link">Team</a></li>
+                    <li><a href="#" class="header__nav--menu__item__link">Careers</a></li>
+                </ul>
             </li>
             <li class="header__nav--menu__item">
                 <a href="#" class="header__nav--menu__item__link">Packages</a>
@@ -91,6 +98,7 @@
                 <a href="#" class="header__nav--menu__item__link">Contact</a>
             </li>
         </ul>
+
         <div class="header__nav--cta">
             <button class="header__nav--cta__btn">(+382)069/000-000</button>
         </div>
@@ -171,6 +179,38 @@
     document.querySelector(".hero__btn").addEventListener("click", () => {
         document.getElementById("packages").scrollIntoView({behavior: "smooth"});
     });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("nav-menu");
+
+        hamburger.addEventListener("click", function () {
+            navMenu.classList.toggle("open");
+        });
+
+        // Dropdown toggle for menu items with a submenu
+        const dropdownItems = document.querySelectorAll(".header__nav--menu__item.dropdown");
+
+        dropdownItems.forEach(item => {
+            const link = item.querySelector(".header__nav--menu__item__link");
+            link.addEventListener("click", function (e) {
+                // Prevent default action to toggle dropdown instead
+                e.preventDefault();
+                item.classList.toggle("open");
+            });
+        });
+
+        // Optionally, close menu when clicking outside
+        document.addEventListener("click", function (e) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove("open");
+                dropdownItems.forEach(item => item.classList.remove("open"));
+            }
+        });
+    });
+
 </script>
 </body>
 </html>
