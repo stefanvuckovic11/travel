@@ -4,19 +4,23 @@
     <meta charset="UTF-8"/>
     <title>Go Trip</title>
     <link rel="stylesheet" href="styles.css"/>
+    <link rel="preload" as="image" href="https://cdn.getyourguide.com/img/location/5eb12ba3d32ef.jpeg/99.jpg">
+    <link rel="preload" as="image"
+          href="https://nova.rs/wp-content/uploads/2023/07/14/1689345300-profimedia-0771466590.jpg">
+    <link rel="preload" as="image"
+          href="https://www.montenegrohostel.com/images/BOKA_BAY_REGION/MH_Travel-Boka_Bay_05-02.jpg">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!-- Flag Icon CSS -->
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css"
     />
 </head>
 <body class="body">
-<!-- Background Slider -->
 <div class="slider">
     <div class="container">
         <div
@@ -36,7 +40,6 @@
 
 
 <header class="header">
-    <!-- Top Bar -->
     <div class="header__top">
         <div class="header__top--contact">
             <span class="header__top--contact__email">company@domain.com</span>
@@ -64,32 +67,23 @@
         </div>
     </div>
 
-    <!-- Navbar -->
     <div class="header__nav">
         <div class="header__nav--logo">
             <h1 class="header__nav--logo__title">Logo</h1>
         </div>
 
-        <!-- Hamburger Icon for Mobile -->
         <div class="header__hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
 
-        <!-- Navigation Menu -->
         <ul class="header__nav--menu" id="nav-menu">
             <li class="header__nav--menu__item">
                 <a href="#" class="header__nav--menu__item__link">Home</a>
             </li>
-            <li class="header__nav--menu__item dropdown">
+            <li class="header__nav--menu__item">
                 <a href="#" class="header__nav--menu__item__link">About</a>
-                <!-- Dropdown Submenu -->
-                <ul class="header__nav--menu__item--dropdown">
-                    <li><a href="#" class="header__nav--menu__item__link">Our Story</a></li>
-                    <li><a href="#" class="header__nav--menu__item__link">Team</a></li>
-                    <li><a href="#" class="header__nav--menu__item__link">Careers</a></li>
-                </ul>
             </li>
             <li class="header__nav--menu__item">
                 <a href="#" class="header__nav--menu__item__link">Packages</a>
@@ -113,7 +107,6 @@
 <section class="packages" id="packages">
     <h2 class="packages__title">Our Packages</h2>
 
-    <!-- Wrap your articles in a .packages__cards container -->
     <div class="packages__cards">
         <article class="packages__cards--card packages__cards--card__short">
             <h3 class="packages__cards--card__title">3–4 Hour Tour</h3>
@@ -182,7 +175,6 @@
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Mobile menu toggle
         const hamburger = document.getElementById("hamburger");
         const navMenu = document.getElementById("nav-menu");
 
@@ -190,19 +182,16 @@
             navMenu.classList.toggle("open");
         });
 
-        // Dropdown toggle for menu items with a submenu
         const dropdownItems = document.querySelectorAll(".header__nav--menu__item.dropdown");
 
         dropdownItems.forEach(item => {
             const link = item.querySelector(".header__nav--menu__item__link");
             link.addEventListener("click", function (e) {
-                // Prevent default action to toggle dropdown instead
                 e.preventDefault();
                 item.classList.toggle("open");
             });
         });
 
-        // Optionally, close menu when clicking outside
         document.addEventListener("click", function (e) {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 navMenu.classList.remove("open");
