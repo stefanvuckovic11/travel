@@ -1,12 +1,17 @@
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
+
 
 .body {
   position: relative;
   min-height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.2);
+
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }

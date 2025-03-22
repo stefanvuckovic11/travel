@@ -1,0 +1,119 @@
+.packages {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 50vh;
+  color: #333;
+  z-index: 2;
+  padding: 4rem 1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    align-items: stretch; // Ensures all cards stretch to the same height
+
+    &--card {
+      /* The important change: make each card a flex column */
+      display: flex;
+      flex-direction: column;
+
+      flex: 0 0 350px;
+      max-width: 350px;
+      background: #fff;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+      padding: 2rem;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      &.packages__cards--card__short {
+        border-top: 4px solid #ffd700;
+      }
+
+      &.packages__cards--card__mid {
+        border-top: 4px solid #f34152;
+      }
+
+      &.packages__cards--card__long {
+        border-top: 4px solid #2ecc71;
+      }
+
+      &__title {
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      &__description {
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #555;
+      }
+
+      &__details {
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+        text-align: left;
+      }
+
+      &__btn {
+        display: inline-block;
+        background-color: #ff5f5f;
+        color: #fff;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+
+        /* Pushes the button to the bottom of the card */
+        margin-top: auto;
+
+        &:hover {
+          background-color: #ff2e2e;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjust card widths or layout here if needed */
+}

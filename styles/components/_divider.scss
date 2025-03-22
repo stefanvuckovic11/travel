@@ -1,0 +1,22 @@
+// divider.scss
+
+.divider-section {
+
+  margin-top: -5rem;
+  position: relative;
+  z-index: 2;
+
+  overflow: hidden;
+
+  &__divider {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    /* If you want the wave to flip or invert, you can rotate it:
+       transform: rotate(180deg);
+       or to mirror it horizontally:
+       transform: scaleX(-1);
+    */
+  }
+}
