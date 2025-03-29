@@ -106,7 +106,9 @@
   justify-content: center;
   gap: 2rem;
   width: 100%;
-  align-items: stretch;
+  align-items: flex-start;
+  /* Base card styles (for first three cards) */
+  /* Wide card: force a new row, full width outer container, inner fixed at 700px */
 }
 .packages__cards--card {
   display: flex;
@@ -120,8 +122,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
   padding: 2rem;
-  /* Image container at the top of each card */
-  /* Card Content */
+  /* Standard image container for these cards */
 }
 .packages__cards--card:hover {
   transform: translateY(-5px);
@@ -183,9 +184,31 @@
 .packages__cards--card__btn:hover {
   background-color: #ff2e2e;
 }
+.packages__cards--card--wide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  border-top: 4px solid #3498db;
+}
+.packages__cards--card--wide__inner {
+  width: 700px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  /* Override image container height inside wide card */
+}
+.packages__cards--card--wide__inner .packages__cards--card__image {
+  height: 100px;
+  margin-bottom: 1rem;
+}
 
-/* Tablet: shrink cards to 300px */
-@media screen and (max-width: 768px) {
+/* Tablet adjustments */
+@media (max-width: 768px) {
   .packages__cards--card {
     flex: 0 0 300px;
     max-width: 300px;
@@ -204,8 +227,11 @@
     font-size: 0.9rem;
     padding: 0.65rem 1.2rem;
   }
+  .packages__cards--card--wide__inner {
+    width: 600px;
+  }
 }
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .packages__cards--card {
     flex: 0 0 100%;
     max-width: 100%;
@@ -224,6 +250,9 @@
   .packages__cards--card__btn {
     font-size: 0.85rem;
     padding: 0.6rem 1rem;
+  }
+  .packages__cards--card--wide__inner {
+    width: 100%;
   }
 }
 .divider-section {

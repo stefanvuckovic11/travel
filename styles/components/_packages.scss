@@ -35,8 +35,9 @@
     justify-content: center;
     gap: 2rem;
     width: 100%;
-    align-items: stretch; // Ensures all cards stretch to the same height
+    align-items: flex-start;
 
+    /* Base card styles (for first three cards) */
     &--card {
       display: flex;
       flex-direction: column;
@@ -55,7 +56,7 @@
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
       }
 
-      // Variants based on card type
+      // Variants for first three cards
       &.packages__cards--card__short {
         border-top: 4px solid #ffd700;
       }
@@ -68,22 +69,21 @@
         border-top: 4px solid #2ecc71;
       }
 
-      /* Image container at the top of each card */
+      /* Standard image container for these cards */
       &__image {
         width: 100%;
-        height: 200px; // fixed height for consistent layout
+        height: 200px; // standard height
         margin-bottom: 1rem;
         overflow: hidden;
 
         img {
           width: 100%;
           height: 100%;
-          object-fit: cover; // crops image if needed
+          object-fit: cover;
           display: block;
         }
       }
 
-      /* Card Content */
       &__title {
         margin-bottom: 1rem;
         font-size: 1.4rem;
@@ -117,22 +117,48 @@
         border-radius: 4px;
         transition: background-color 0.3s ease;
         text-decoration: none;
-        margin-top: auto; // Pushes the button to the bottom
+        margin-top: auto;
 
         &:hover {
           background-color: #ff2e2e;
         }
       }
     }
+
+    /* Wide card: force a new row, full width outer container, inner fixed at 700px */
+    &--card--wide {
+      flex: 0 0 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      border-top: 4px solid #3498db;
+
+      &__inner {
+        width: 700px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1rem;
+
+        /* Override image container height inside wide card */
+        .packages__cards--card__image {
+          height: 100px; // half the standard image height
+          margin-bottom: 1rem;
+        }
+      }
+    }
   }
 }
 
-/* Tablet: shrink cards to 300px */
-@media screen and (max-width: 768px) {
+/* Tablet adjustments */
+@media (max-width: 768px) {
   .packages__cards--card {
     flex: 0 0 300px;
     max-width: 300px;
-    padding: 1.5rem; // Slightly reduce padding on tablet
+    padding: 1.5rem;
   }
   .packages__cards--card__title {
     font-size: 1.3rem;
@@ -147,9 +173,12 @@
     font-size: 0.9rem;
     padding: 0.65rem 1.2rem;
   }
+  .packages__cards--card--wide__inner {
+    width: 600px;
+  }
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .packages__cards--card {
     flex: 0 0 100%;
     max-width: 100%;
@@ -168,5 +197,8 @@
   .packages__cards--card__btn {
     font-size: 0.85rem;
     padding: 0.6rem 1rem;
+  }
+  .packages__cards--card--wide__inner {
+    width: 100%;
   }
 }
