@@ -1,15 +1,11 @@
-// 1. Global variables
-@import "variables/variables";         // from styles/variables/variables.scss
+@import "variables/variables";
 
-// 2. Component-specific variables (if needed)
-@import "components/variables";        // from styles/components/_variables.scss
+@import "components/variables";
 
-// 3. Components
-@import "components/hero";            // from styles/components/_hero.scss
-@import "components/packages";         // from styles/components/_packages.scss
-@import "components/divider";         // from styles/components/_divider.scss
-@import "components/slider";          // from styles/components/_slider.scss
-@import "components/navbar";          // from styles/components/_navbar.scss
+@import "components/hero";
+@import "components/packages";
+@import "components/divider";
+@import "components/slider";
+@import "components/navbar";
 
-// 4. Pages
-@import "pages/index";                // from styles/pages/index.scss
+@import "pages/index";
